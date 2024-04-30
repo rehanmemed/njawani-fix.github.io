@@ -27,12 +27,9 @@ const HomePage = () => {
                 yang Anda Cari Disini!
               </h1>
               <p className="mb-4 animate__animated animate__fadeInUp animate__delay-1s">
-                Sugeng rawuh, para tamu! Njeroning kéné, temen-temen bisa
-                nemokake informasi apik saka budaya lan tradisi Jawa. Mari
-                guyup, nikmati kabar-kabar apik kang ana ing kéné. Gunakake
-                tautan kang ana ing papan inggil kanggo manunggal marang
-                pitakonan kang dibutuhake. Selamat nyawiji ing watesan kéné! Aja
-                wedi, matur nuwun.
+                Sugeng rawuh! Niki, temen-temen bisa nemokake informasi apik bab
+                budaya lan tradisi Jawa. Aja guyup, nikmati kabar-kabar apik
+                sing ana ing kéné. Sugeng wengi! Matur nuwun.
               </p>
               <button
                 className="btn btn-danger btn-lg rounded-1 me-2 mb-xs-0 mb-1 animate__animated animate__fadeInUp animate__delay-1s"
@@ -108,7 +105,7 @@ const HomePage = () => {
               data-aos-duration="1000"
             >
               <button
-                className="btn btn-success rounded-5 btn-lg"
+                className="btn btn-success rounded-5 btn-lg btn-brown"
                 onClick={() => navigate("/budaya")}
               >
                 Lihat Semua Budaya

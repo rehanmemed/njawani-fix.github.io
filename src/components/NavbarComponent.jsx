@@ -1,25 +1,33 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
-
 import { navLinks } from "../data/index";
 import { NavLink } from "react-router-dom";
 
 const NavbarComponent = () => {
   const [changeColor, setChangeColor] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const changeBackgroundColor = () => {
-    if (window.scrollY > 5) {
+    if (window.scrollY > 5 || isMenuOpen) {
       setChangeColor(true);
     } else {
       setChangeColor(false);
     }
   };
 
+  const handleMenuClick = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   useEffect(() => {
     changeBackgroundColor();
-
     window.addEventListener("scroll", changeBackgroundColor);
-  });
+
+    // Cleanup event listener
+    return () => {
+      window.removeEventListener("scroll", changeBackgroundColor);
+    };
+  }, [isMenuOpen]);
 
   return (
     <div>
@@ -28,9 +36,12 @@ const NavbarComponent = () => {
           <Navbar.Brand href="#home" className="fs-3 fw-bold">
             Njawani.
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Toggle
+            aria-controls="basic-navbar-nav"
+            onClick={handleMenuClick}
+          />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mx-auto text-center">
+            <Nav className="mx-auto">
               {navLinks.map((link) => {
                 return (
                   <div className="nav-link" key={link.id}>
@@ -48,7 +59,7 @@ const NavbarComponent = () => {
               })}
             </Nav>
 
-            <div className="text-center">
+            <div className="py-2">
               <button className="btn btn-outline-danger rounded-1">
                 Buat Akun
               </button>
